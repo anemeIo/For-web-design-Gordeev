@@ -1,0 +1,370 @@
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      scroll-behavior: smooth; /* плавный скролл */
+    }
+    
+.scroll-container {
+  height: 100%;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory; /* включаем вертикальное прилипания */
+}
+    /* Хедер */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background: #333;
+  color: #fff;
+  display: flex;
+  justify-content: center; /* по горизонтали */
+  align-items: center;     /* по вертикали */
+  z-index: 1000;
+  gap: 16px; /* если есть логотип рядом с текстом */
+}
+
+header .header-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+header .header-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+    /* Общие секции */
+    .section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 0 118px;
+      gap: 24px;
+    }
+
+    /* Секция 1 */
+    .section1 {
+      flex-direction: column;
+      background-color: #f0f0f0;
+      padding-top: 70px; /* отступ под хедер */
+    }
+
+    .logo {
+      width: 120px;
+      height: 120px;
+      background-color: #333;
+      border-radius: 50%;
+      margin-bottom: 24px;
+    }
+
+    .site-name {
+      font-size: 48px;
+      font-weight: bold;
+    }
+
+    /* Секция 4 - слайдер */
+    .section4 {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .slider {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      transition: transform 1s ease;
+    }
+
+    .slide {
+      position: relative;
+      min-width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Подпись справа снизу */
+    .caption {
+      position: absolute;
+      bottom: 20px;
+      right: 30px;
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 18px;
+      max-width: 300px;
+      text-align: right;
+    }
+
+    /* Навигация (точки) */
+    .dots {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #aaa;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .dot.active {
+      background: #fff;
+    }
+
+    /* Секция 2 */
+.section2 {
+  position: relative;
+  flex-wrap: wrap;
+  background-color: #e0e0e0;
+  justify-content: center;   /* ✅ по центру по горизонтали */
+  align-items: center;       /* ✅ по центру по вертикали */
+  gap: 40px;                 /* расстояние между карточками */
+  padding: 100px 0;          /* отступы сверху/снизу */
+  min-height: 100vh;         /* чтобы занимало весь экран */
+}
+
+    .card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 600px;      /* ✅ фиксированная высота */
+  width: 350px;       /* ✅ шире карточки */
+  gap: 16px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 1;
+  background: #000000;
+
+}
+
+.card:hover {
+  transform: scale(1.05); /* увеличиваем на 5% при наведении */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* лёгкая тень для глубины */
+}
+
+
+/* Прямоугольник с картинкой */
+.card-rect {
+  
+  width: 300px;
+  height: 800px;   /* ✅ увеличил под размер */
+  border-right: 4px solid #ffffff;
+  border-bottom: 4px solid #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+}
+/* Нижний блок — текст в раскрытой карточке */
+.text-block {
+  grid-column: 2;
+  padding: 16px;
+  background: #f7f7f7;
+  border-radius: 8px;
+  font-size: 40px;  /* увеличенный размер шрифта */
+  line-height: 1.5;
+  overflow-y: auto;
+}
+
+.card-rect img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Заголовок */
+.card-title {
+  font-size: 22px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+    /* Активная карточка */
+    .card.active {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 24px;
+      z-index: 10;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card.active .card-rect,
+    .card.active .card-title {
+      display: none;
+    }
+
+    /* Макет внутри раскрытой карточки */
+    .expanded-layout {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      grid-template-rows: auto 1fr;
+      gap: 16px;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Левая колонка с фото */
+    .photo-gallery {
+      grid-row: 1 / span 2;
+      overflow-y: auto;
+      border-right: 2px solid #000000;
+      padding-right: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .photo-gallery img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    /* Правая верхняя часть — гифка */
+    .gif-container {
+      display: flex;
+      justify-content: center;
+      background: #000000;
+      align-items: center;
+      border: 2px solid #333;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .gif-container img {
+      height: 500px;   /* ✅ фиксированная высота */
+      width: auto;     /* ✅ чтобы не растягивалась */
+      object-fit: contain; /* ✅ изображение полностью в контейнере */
+    }
+
+    /* Нижний блок — текст */
+    .text-block {
+      grid-column: 2;
+      padding: 16px;
+      background: #f7f7f7;
+      border-radius: 8px;
+      font-size: 16px;
+      line-height: 1.5;
+      overflow-y: auto;
+    }
+    
+
+    /* Скрываем остальные карточки */
+    .section2.hide-others .card:not(.active) {
+      display: none;
+    }
+
+    .extra-content {
+      display: none;
+      height: 100%;
+    }
+
+    .card.active .extra-content {
+      display: block;
+      flex-grow: 1;
+    }
+
+    .back-btn {
+      margin-top: 16px;
+      padding: 10px 20px;
+      border: none;
+      background: #333;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    /* Секция 3 */
+    .section3 {
+  flex-direction: column;
+  background-color: #f7f7f7;
+  padding: 40px 118px;
+  gap: 24px;
+}
+
+/* Контейнер для контента */
+.section3-content {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* Левая колонка с фото */
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  min-width: 250px;
+}
+
+.profile-photo {
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #333;
+}
+
+.profile-caption {
+  font-size: 16px;
+  text-align: center;
+  color: #555;
+}
+
+/* Правая колонка с текстом */
+.profile-text {
+  flex: 1;
+  font-size: 30px;       /* размер шрифта */
+  line-height: 1.4;
+  color: #333;
+  display: flex;
+  justify-content: center; /* по горизонтали */
+  align-items: center;     /* по вертикали */
+  text-align: center;      /* выравнивание текста */
+}
+
+.site-footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 16px;
+}

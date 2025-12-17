@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doodle Jump - Endless Platformer Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1>Doodle Jump</h1>
+            <div class="score-display">
+                <span>Score: <span id="score">0</span></span>
+                <span>High Score: <span id="high-score">0</span></span>
+            </div>
+        </div>
+        
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+        
+        <div class="game-controls">
+            <div class="control-instructions">
+                <p>Use ← → / A D keys to move</p>
+                <p>Land on platforms to jump higher!</p>
+            </div>
+            <div class="game-buttons">
+                <button id="startBtn" class="game-btn">Start Game</button>
+                <button id="pauseBtn" class="game-btn" style="display: none;">Pause</button>
+                <button id="restartBtn" class="game-btn" style="display: none;">Restart</button>
+            </div>
+        </div>
+        
+        <div id="gameOverScreen" class="game-over-screen" style="display: none;">
+            <div class="game-over-content">
+                <h2 id="gameOverTitle">Game Over!</h2>
+                <p>Level Score: <span id="levelScore">0</span></p>
+                <p>Total Score: <span id="totalScore">0</span></p>
+                <p>High Score: <span id="finalHighScore">0</span></p>
+                <button id="playAgainBtn" class="game-btn">Play Again</button>
+                <button id="nextLevelBtn" class="game-btn" style="display: none;">Next Level</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Scripts -->
+    <script src="InputHandler.js"></script>
+    <script src="Collision.js"></script>
+    <script src="Platform.js"></script>
+    <script src="Player.js"></script>
+    <script src="Renderer.js"></script>
+    <script src="Game.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
